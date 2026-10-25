@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Descomprimir proyecto
-        run: unzip -q Julio_proyecto_etapa2.zip
+        run: unzip -q "$(find . -iname 'Julio_proyecto_*.zip' -printf '%f %p\n' | sort | tail -n 1 | cut -d' ' -f2-)" -d .
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
